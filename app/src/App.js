@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Navbar from './components/Navbar/Navbar.js'
-import Jumbotron from './components/Jumbotron/Jumbotron.js';
-import Articles from './components/Articles/Articles.js';
+//import { BrowserRouter, Route } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar.js';
+//import homeRoute from './routes/Home';
+//import savedRoute from './routes/Saved';
+import Jumbotron from './components/Jumbotron/Jumbotron';
+import Articles from './components/Articles/Articles';
 
 class App extends Component {
   render() {
@@ -11,10 +14,15 @@ class App extends Component {
       //div for pic
       //Home: repeating article title, summary, picture, btn to save
       //Saved: repeating article title, summary, picture, btn to delet form saved & btn to add article note
+    //   <BrowserRouter>
+    //   <Navbar />
+    //     <Route path='/home' component={homeRoute} />
+    //     <Route path='/devices' component={savedRoute} /> 
+    // </BrowserRouter>
       <div>
         <Navbar/>
         <Jumbotron/>
-        <Articles/>
+        <Articles/>        
       </div>
     );
   }
