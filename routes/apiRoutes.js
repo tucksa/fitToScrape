@@ -44,8 +44,8 @@ router.post('/articles', (req,res) => {
 });
 
 // router get all notes associated with article
-router.get('articles/:id', (req, res)=> {
-    db.Article.findOne({ _id: req.params.id })
+router.get('saved', (req, res)=> {
+    db.Article.find({ isSaved: true })
     .populate('note')
     .then(dbArticle => {
         res.json(dbArticle);
