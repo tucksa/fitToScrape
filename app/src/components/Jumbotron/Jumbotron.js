@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Jumbotron.css';
 
-class Jumbotron extends React.Component {
+class Jumbotron extends Component {
     render(){
         return(
             <div className="myJumbotron jumbotron jumbotron-fluid">
