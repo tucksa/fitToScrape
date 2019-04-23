@@ -1,3 +1,6 @@
+.myNavBtn {
+    float: right
+};
 .myJumbotron {
     background-image: url('../../images/Morning_sun_coffee_newspaper_table_590.jpg');
     background-repeat: no-repeat;
