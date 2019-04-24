@@ -25,7 +25,7 @@ app.get('/ping', function (req, res) {
 });
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join('build', 'index.html'));
+  res.sendFile(path.join(_dirname,'build/index.html'));
 });
 
 //which port
