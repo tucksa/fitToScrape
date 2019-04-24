@@ -7,7 +7,7 @@ const app= express();
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.json());
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = "mongodb://<heroku_ffktn7tz>:<Sharolyn@89>@ds021731.mlab.com:21731/heroku_ffktn7tz" || "mongodb://localhost/mongoHeadlines";
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
 .then(() => console.log('Mongo is connected'))
