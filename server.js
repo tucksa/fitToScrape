@@ -19,11 +19,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 app.use(express.static(path.join('public', 'build')));
+
 app.get('/ping', function (req, res) {
  return res.send('pong');
 });
+
 app.get('/*', function (req, res) {
-  res.sendFile(path.join('public', 'build', 'index.html'));
+  res.sendFile(path.join('build', 'index.html'));
 });
 
 //which port
