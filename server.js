@@ -26,14 +26,14 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join('public', 'build', 'index.html'));
 });
 
-
+//which port
 const PORT= process.env.PORT || 5000;
 
 //Use Routes
 app.use('/api', require('./routes/apiRoutes'));
 
 
-
+//server listen to port
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
   });
