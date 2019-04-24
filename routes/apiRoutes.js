@@ -78,6 +78,18 @@ router.delete('/articles/:id', (req,res) => {
         console.log(err);
     })
 
+});
+
+//saving articles 
+router.put('/saved/:id', (req, res) => {
+    db.Article.findOneAndUpdate({ _id: req.params.id}, { isSaved: true })
+    .then(update => {
+        update.json('you saved an article!')
+    })
+    .catch(err => {
+        console.log(err)
+    })
+
 })
     
 

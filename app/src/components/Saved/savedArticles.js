@@ -45,21 +45,15 @@ class Saved extends Component {
 
     handleAddNote = (e) => {
         e.preventDefault();
-        // pop out note modal
-
-        //get all current notes
-        axios.get('api/articles/:id')
-        .then(dbNote => {
-            console.log(dbNote);
+        this.setState({
+            id: e.target.attr('data-id')
         })
-        .catch(err => {
-            console.log(err);
-        });
     };
 
     handleNoteSubmit = (e) => {
         e.preventDefault();
-        axios.post('api/articles/:id')
+        let artId = e.target.attr('data-id')
+        axios.post('api/articles/' + artId)
         .then(res => {
             console.log('successfully posted your note')
         })
@@ -70,7 +64,8 @@ class Saved extends Component {
 
     handleDeleteNote = (e) => {
         e.preventDefault();
-        axios.delete('api/articles/:id')
+        let artId = e.target.attr('data-id')
+        axios.delete('api/articles/' + artId)
         .then(res => {
             console.log('you successfully deleted your note- congratulations theres no evidence');
         })
@@ -78,9 +73,10 @@ class Saved extends Component {
             console.log(err);
         });
     };
+    
 
     render(){
-        let articles = this.state.title.map( (x,i) => <Row id='title' key={i} ><Col xs={3}><Link to={this.state.link}></Link></Col><Col xs={8}><h1>{this.state.title[i]}</h1><button type="button" class="question btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" onClick= {this.handleAddNote}>Add Note</button><br /><p>{this.state.content[i]}...</p><p>`Notes : ${this.state.note[i]}`</p></Col></Row>)
+        let articles = this.state.title.map( (x,i) => <Row id='title' key={i} ><Col xs={3}><Link to={this.state.link}></Link></Col><Col xs={8}><h1>{this.state.title[i]}</h1><button type="button" class="question btn btn-primary btn-lg" data-id= {this.state.id[i]} data-toggle="modal" data-target="#exampleModal" onClick= {this.handleAddNote}>Add Note</button><br /><p>{this.state.content[i]+ 'Notes: '+ this.state.note[i].map( i => <li>i<button type="submit" onClick= {this.handleDeleteNote} data-id= {this.state.id[i]} class="btn btn-danger">Delete</button></li>)} </p></Col></Row>)
 
         return(
             <Fragment>
@@ -105,8 +101,7 @@ class Saved extends Component {
                                             <label for="exampleInputPassword1">Content</label>
                                             <input type="password" class="form-control" id="exampleInputPassword1"/>
                                         </div>
-                                        <button type="submit" onClick= {this.handleNoteSubmit} class="btn btn-primary">Submit</button>
-                                        <button type="submit" onClick= {this.handleDeleteNote} class="btn btn-danger">Delete</button>
+                                        <button type="submit" data-id= {this.state.id} onClick= {this.handleNoteSubmit} class="btn btn-primary">Submit</button>
                                     </form>
                                                                         
                                 </div>

@@ -17,16 +17,16 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
-app.use(express.static(path.join('public', 'build')));
+// app.use(express.static('public'));
+// app.use(express.static(path.join('public', 'build')));
 
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
+// app.get('/ping', function (req, res) {
+//  return res.send('pong');
+// });
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(_dirname,'build/index.html'));
-});
+// app.get('/*', function (req, res) {
+//   res.sendFile(path.join(_dirname,'build/index.html'));
+// });
 
 //which port
 const PORT= process.env.PORT || 5000;
