@@ -18,11 +18,11 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
   .catch(err => console.log(err));
 
 
-app.use('/static', express.static(path.join(__dirname, '/app/build/static')));
+// app.use('/static', express.static(path.join(__dirname, '/app/build/static')));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/app/build/'))
-});
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/app/build/'))
+// });
 
 // Use Routes
 app.use('/api', require('./routes/apiRoutes'));
