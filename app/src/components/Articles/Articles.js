@@ -3,8 +3,8 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Link } from 'react-router-dom'
 import './Articles.css'
+import {BrowserRouter} from 'react-router-dom';
 
 class Articles extends Component {
     constructor(props) {
@@ -16,30 +16,29 @@ class Articles extends Component {
             id: []
         }
     }
-    componentDidMount = () => {
-        console.log('working?')
+    componentDidMount= () => {
         axios.get('/api/articles')
         .then(res => {
             let title= [];
-            // let link = [];
-            // let content = [];
-            // let id = [];
-            res.data.title.map(i => title.push(i))
-            // for (let i = 0; i < res.data.length; i++) {
-            //     title.push(res.data[i].title)
-            //     link.push(res.data[i].link)
-            //     content.push(res.data[i].content)
-            //     id.push(res.data[i].id)
-            // };
+            let link= [];
+            let content= [];
+            let id= [];
+            res.data.map(i => title.push(i.title));
+            res.data.map(i => link.push(i.link));
+            res.data.map(i => content.push(i.content));
+            res.data.map(i => id.push(i._id));
+            
             this.setState({
-                title: title,
-                // link: link,
-                // content: content,
-                // id: id
-            });
-            console.log(this.state.title);
-        });
-    };
+                title,
+                link,
+                content,
+                id
+            })            
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
 
     handleSaveArticle = id => {
         console.log(id)
@@ -52,12 +51,14 @@ class Articles extends Component {
         })
     }
     render(){
-        let articles = this.state.title.map( (x,i) => <Row id='atrDis' key={i} ><Col xs={3}><Link to={this.state.link}></Link></Col><Col xs={8}><h1>{this.state.title[i]}</h1><br /><p>{this.state.content[i]}...</p><button type="submit" onClick= {() => this.handleSaveArticle(this.state.id[i])} class="btn btn-danger">Save</button></Col></Row>)
-
+        let articles = this.state.title.map( (x,i) => <Row id= 'artDis' key = {i}><Col xs = {10}><h4 className= 'title'>{x}</h4><br /><p>{this.state.content[i]}</p><br /><a href= {"http://www.nytimes.com/"+this.state.link[i]}> Read more </a></Col><Col xs= {1}><button className= 'myBtn btn btn-primary' onClick= {() => this.handleSaveArticle(this.state.id[i])}>Save</ button></Col></Row>)        
+            
         return(
             <Fragment>
-                <Container>
-                    {articles}
+                <Container className= 'myContainer'>
+                    <BrowserRouter>
+                        {articles}
+                    </BrowserRouter>                    
                 </Container>
             </Fragment>
        

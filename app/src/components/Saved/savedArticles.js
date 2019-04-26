@@ -3,8 +3,8 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css';
+import './savedArticles.css';
 
 class Saved extends Component {
     constructor(props) {
@@ -21,40 +21,36 @@ class Saved extends Component {
         axios.get('/api/saved')
         .then(res => {
             let title= [];
-            let link = [];
-            let content = [];
-            let id = [];
-            let note = [];
-            for (let i = 0; i < res.data.length; i++) {
-                title.push(res.data[i].title)
-                link.push(res.data[i].link)
-                content.push(res.data[i].content)
-                id.push(res.data[i].id)
-                note.push(res.data[i].note)
-            };
+            let link= [];
+            let content= [];
+            let id= [];
+            let note= []
+            res.data.map(i => title.push(i.title));
+            res.data.map(i => link.push(i.link));
+            res.data.map(i => content.push(i.content));
+            res.data.map(i => id.push(i._id));
+            res.data.map(i => note.push(i.note));
+            
             this.setState({
-                title: title,
-                link: link,
-                content: content,
-                id: id,
-                note:note
-            });
-            console.log(this.state.title);
-        });
+                title,
+                link,
+                content,
+                id,
+                note
+            })            
+        })
+        .catch(err => {
+            console.log(err)
+        })
        
     };
 
     handleAddNote = (e) => {
-        e.preventDefault();
-        this.setState({
-            id: e.target.attr('data-id')
-        })
+  
     };
 
-    handleNoteSubmit = (e) => {
-        e.preventDefault();
-        let artId = e.target.attr('data-id')
-        axios.post('api/articles/' + artId)
+    handleNoteSubmit = id => {
+        axios.post('api/articles/' + id)
         .then(res => {
             console.log('successfully posted your note')
         })
@@ -63,10 +59,8 @@ class Saved extends Component {
         });
     };
 
-    handleDeleteNote = (e) => {
-        e.preventDefault();
-        let artId = e.target.attr('data-id')
-        axios.delete('api/articles/' + artId)
+    handleDeleteNote = id => {
+        axios.delete('api/articles/' + id)
         .then(res => {
             console.log('you successfully deleted your note- congratulations theres no evidence');
         })
@@ -77,8 +71,8 @@ class Saved extends Component {
     
 
     render(){
-        let articles = this.state.title.map( (x,i) => <Row id='title' key={i} ><Col xs={3}><Link to={this.state.link}></Link></Col><Col xs={8}><h1>{this.state.title[i]}</h1><button type="button" className="question btn btn-primary btn-lg" data-id= {this.state.id[i]} data-toggle="modal" data-target="#exampleModal" onClick= {this.handleAddNote}>Add Note</button><br /><p>{this.state.content[i]+ 'Notes: '+ this.state.note[i].map( i => <li>i<button type="submit" onClick= {this.handleDeleteNote} data-id= {this.state.id[i]} className="btn btn-danger">Delete</button></li>)} </p></Col></Row>)
-
+        let articles = this.state.title.map( (x,i) => <Row id= 'artDis' key = {i}><Col xs = {10}><h4 className= 'title'>{x}</h4><br /><p>{this.state.content[i]}</p><br /><p>Notes: <ul>{this.state.note[i].map(i => <li>{i.title}<button type="submit" onClick= {() => this.handleDeleteNote(i._id)} className="btn btn-danger">Delete</button><br /> {i.body}</li>)}</ul></p><a href= {"http://www.nytimes.com/"+this.state.link[i]}> Read more </a> <button type="button" className="question btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" onClick= {() => this.handleAddNote(this.state.id[i])}>Add Note</button></Col><Col xs= {1}><button className= 'myBtn btn btn-danger' onClick= {() => this.handleSaveArticle(this.state.id[i])}>Save</ button></Col></Row>)        
+            
         return(
             <Fragment>
                 <Container>

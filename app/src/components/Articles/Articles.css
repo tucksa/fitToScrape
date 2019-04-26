@@ -1,5 +1,17 @@
 #artDis{
     text-align: left;
-    border-bottom: 1px solid pink;
+    border-bottom: 1px solid darkgray;
     width: 100%;
+    background-color:#9c6f44;
+    color: white;
+}
+.myContainer {
+    border: 1px solid lightgrey;
+}
+
+.myBtn {
+    margin-top: 75%;
+}
+.title {
+    margin-top: 5%;
 }

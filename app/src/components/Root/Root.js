@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
-import './Root.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Background from '../../images/Morning_sun_coffee_newspaper_table_590.jpg';
 
+const myStyle = {
+    backgroundImage: "url("+Background+")",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "100%",
+    height: "650px",
+    margin: "0%"
+}
 
+const myJum = {
+    textAlign: "center",
+    color: "white",
+    marginTop:"10%"
+}
 
 class Root extends Component{
     handleArticleScrape = () => {
@@ -29,8 +42,8 @@ class Root extends Component{
                         </div>
                     </div>
                 </nav>
-                <div className="myJumbotron jumbotron jumbotron-fluid">
-                    <div className="myJum container">
+                <div style= {myStyle} className="myJumbotron jumbotron jumbotron-fluid">
+                    <div style= {myJum} className="container">
                         <h1 className="display-4">Scraped Articles</h1>
                         <p className="lead">New York Times Edition</p>
                     </div>
