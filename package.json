@@ -27,10 +27,6 @@
     "url": "https://github.com/tucksa/fitToScrape/issues"
   },
   "homepage": "https://github.com/tucksa/fitToScrape#readme",
-  "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
-  },
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.3",
@@ -43,5 +39,9 @@
     "mongoose": "^5.5.2",
     "morgan": "^1.9.1",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
   }
 }
