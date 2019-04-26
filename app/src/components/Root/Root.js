@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
+
 class Root extends Component{
     handleArticleScrape = () => {
         axios.post('/api/articles')
         .then(dbArticles => {
-            console.log(dbArticles);
+            console.log(dbArticles.data);
         })
         .catch(err => {
             console.log(err);

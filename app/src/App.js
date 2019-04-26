@@ -21,10 +21,9 @@ class App extends Component {
       //   <IndexRoute component= {Articles}/>
       //history= {browerHistory}
       <BrowserRouter >
-          <Root>
+          <Root/>
           <Route path= '/articles' component = {homeRoute}/>
           <Route path = '/saved' component ={savedRoute} />
-          </Root>
       </BrowserRouter>
     );
   }

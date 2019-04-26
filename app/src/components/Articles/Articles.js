@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
+import './Articles.css'
 
 class Articles extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class Articles extends Component {
         }
     }
     componentDidMount = () => {
+        console.log('working?')
         axios.get('/api/articles')
         .then(res => {
             let title= [];
@@ -50,7 +52,7 @@ class Articles extends Component {
         })
     }
     render(){
-        let articles = this.state.title.map( (x,i) => <Row id='title' key={i} ><Col xs={3}><Link to={this.state.link}></Link></Col><Col xs={8}><h1>{this.state.title[i]}</h1><br /><p>{this.state.content[i]}...</p><button type="submit" onClick= {this.handleSaveArticle} data-id= {this.state.id[i]} class="btn btn-danger">Save</button></Col></Row>)
+        let articles = this.state.title.map( (x,i) => <Row id='atrDis' key={i} ><Col xs={3}><Link to={this.state.link}></Link></Col><Col xs={8}><h1>{this.state.title[i]}</h1><br /><p>{this.state.content[i]}...</p><button type="submit" onClick= {this.handleSaveArticle} data-id= {this.state.id[i]} class="btn btn-danger">Save</button></Col></Row>)
 
         return(
             <Fragment>

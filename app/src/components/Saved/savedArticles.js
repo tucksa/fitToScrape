@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Saved extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Saved extends Component {
             note: []
         }
     }
-    componentDidMount = () => {
+    componentDidMount() {
         axios.get('/api/saved')
         .then(res => {
             let title= [];
@@ -76,37 +77,37 @@ class Saved extends Component {
     
 
     render(){
-        let articles = this.state.title.map( (x,i) => <Row id='title' key={i} ><Col xs={3}><Link to={this.state.link}></Link></Col><Col xs={8}><h1>{this.state.title[i]}</h1><button type="button" class="question btn btn-primary btn-lg" data-id= {this.state.id[i]} data-toggle="modal" data-target="#exampleModal" onClick= {this.handleAddNote}>Add Note</button><br /><p>{this.state.content[i]+ 'Notes: '+ this.state.note[i].map( i => <li>i<button type="submit" onClick= {this.handleDeleteNote} data-id= {this.state.id[i]} class="btn btn-danger">Delete</button></li>)} </p></Col></Row>)
+        let articles = this.state.title.map( (x,i) => <Row id='title' key={i} ><Col xs={3}><Link to={this.state.link}></Link></Col><Col xs={8}><h1>{this.state.title[i]}</h1><button type="button" className="question btn btn-primary btn-lg" data-id= {this.state.id[i]} data-toggle="modal" data-target="#exampleModal" onClick= {this.handleAddNote}>Add Note</button><br /><p>{this.state.content[i]+ 'Notes: '+ this.state.note[i].map( i => <li>i<button type="submit" onClick= {this.handleDeleteNote} data-id= {this.state.id[i]} className="btn btn-danger">Delete</button></li>)} </p></Col></Row>)
 
         return(
             <Fragment>
                 <Container>
                     {articles}
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="myDisplay modal-dialog" role="document">
-                            <div class="modal-content"> 
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Notes</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div className="myDisplay modal-dialog" role="document">
+                            <div className="modal-content"> 
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="exampleModalLabel">Notes</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body" id="details">
+                                <div className="modal-body" id="details">
                                     <form>
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <label for="exampleInputEmail1">Title: </label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                                         </div>
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <label for="exampleInputPassword1">Content</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1"/>
+                                            <input type="password" className="form-control" id="exampleInputPassword1"/>
                                         </div>
-                                        <button type="submit" data-id= {this.state.id} onClick= {this.handleNoteSubmit} class="btn btn-primary">Submit</button>
+                                        <button type="submit" data-id= {this.state.id} onClick= {this.handleNoteSubmit} className="btn btn-primary">Submit</button>
                                     </form>
                                                                         
                                 </div>
-                                <div class="modal-footer">
-                                    <a role="button" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                <div className="modal-footer">
+                                    <a role="button" className="btn btn-secondary" data-dismiss="modal">Close</a>
                                 </div>
                             </div>
                         </div>
