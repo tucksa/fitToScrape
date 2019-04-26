@@ -13,9 +13,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("app/build"));
-}
 
 app.use('/static', express.static(path.join(__dirname, '/app/build/static')));
 
