@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import './saved.css';
+import '../Articles/Articles.css';
 
 class Saved extends Component {
     constructor(props) {
