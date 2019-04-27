@@ -25,12 +25,21 @@ class Saved extends Component {
             let link= [];
             let content= [];
             let id= [];
-            let note= []
-            res.data.map(i => title.push(i.title));
-            res.data.map(i => link.push(i.link));
-            res.data.map(i => content.push(i.content));
-            res.data.map(i => id.push(i._id));
-            res.data.map(i => note.push(i.note));
+            let note= [];
+            for(let i=0; i<res.data.length; i ++){
+                title.push(i.title);
+                link.push(i.link);
+                content.push(i.content);
+                id.push(i._id);
+                note.push(i.note);
+            }
+
+
+            // res.data.map(i => title.push(i.title));
+            // res.data.map(i => link.push(i.link));
+            // res.data.map(i => content.push(i.content));
+            // res.data.map(i => id.push(i._id));
+            // res.data.map(i => note.push(i.note));
             
             this.setState({
                 title,
