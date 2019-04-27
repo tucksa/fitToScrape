@@ -34,7 +34,7 @@ class Saved extends Component {
                 note.push(i.note);
             }
 
-
+            console.log(res.data)
             // res.data.map(i => title.push(i.title));
             // res.data.map(i => link.push(i.link));
             // res.data.map(i => content.push(i.content));
