@@ -27,11 +27,11 @@ class Saved extends Component {
             let id= [];
             let note= [];
             for(let i=0; i<res.data.length; i ++){
-                title.push(i.title);
-                link.push(i.link);
-                content.push(i.content);
-                id.push(i._id);
-                note.push(i.note);
+                title.push(res.data[i].title);
+                link.push(res.data[i].link);
+                content.push(res.data[i].content);
+                id.push(res.data[i]._id);
+                note.push(res.data[i].note);
             }
 
             console.log(res.data)

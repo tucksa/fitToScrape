@@ -24,10 +24,10 @@ class Articles extends Component {
             let content= [];
             let id= [];
             for(let i=0; i<res.data.length; i ++){
-                title.push(i.title);
-                link.push(i.link);
-                content.push(i.content);
-                id.push(i._id);
+                title.push(res.data[i].title);
+                link.push(res.data[i].link);
+                content.push(res.data[i].content);
+                id.push(res.data[i]._id);
             }
             // res.data.map(i => title.push(i.title));
             // res.data.map(i => link.push(i.link));
