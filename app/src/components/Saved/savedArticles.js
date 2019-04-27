@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.css';
-import './savedArticles.css';
+import './saved.css';
 
 class Saved extends Component {
     constructor(props) {
