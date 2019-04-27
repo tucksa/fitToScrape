@@ -2,7 +2,8 @@ import React, { Component,Fragment } from 'react';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Col from 'react-bootstrap/Col';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import './saved.css';
 
@@ -101,7 +102,7 @@ class Saved extends Component {
                                                                         
                                 </div>
                                 <div className="modal-footer">
-                                    <a role="button" className="btn btn-secondary" data-dismiss="modal">Close</a>
+                                    <Link role="button" className="btn btn-secondary" data-dismiss="modal">Close</Link>
                                 </div>
                             </div>
                         </div>
