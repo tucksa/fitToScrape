@@ -20,9 +20,9 @@ const myJum = {
 
 class Root extends Component{
     handleArticleScrape = () => {
-        axios.post('/api/articles')
+        axios.get('/app/articles')
         .then(dbArticles => {
-            console.log(dbArticles.data);
+            console.log(dbArticles);
         })
         .catch(err => {
             console.log(err);
